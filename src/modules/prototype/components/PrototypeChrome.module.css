@@ -1,23 +1,118 @@
-/* Abajo a la izquierda: el botón del chatbot de la landing ocupa la derecha. */
-.back {
+/* Herramientas del prototipo: banda fija abajo, por encima de cualquier pantalla. */
+.spacer { height: 5px; }
+
+.dock {
   position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 5000;
-  display: inline-flex;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 7000;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
-  height: 40px;
-  padding-inline: var(--space-5);
-  border-radius: 999px;
-  background-color: rgba(21, 38, 99, 0.92);
-  color: var(--white);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
+  pointer-events: none; /* sólo la banda y el panel reciben el mouse */
+  font-family: var(--font-family-base);
 }
 
-.back:hover {
-  background-color: var(--correo-blue);
-  text-decoration: none;
+/* La banda visible mide 5 px; el área sensible es más alta para que sea fácil alcanzarla. */
+.band {
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  height: 5px;
+  padding: 0;
+  border: 0;
+  background: var(--correo-blue);
+  cursor: pointer;
 }
+.band::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+}
+.band:focus-visible { outline: 2px solid var(--correo-yellow); outline-offset: -2px; }
+
+.panel {
+  pointer-events: auto;
+  width: min(300px, calc(100vw - 32px));
+  padding: 8px 0 12px;
+  border-radius: 16px 16px 0 0;
+  background: var(--correo-blue);
+  color: var(--white);
+  animation: rise 160ms ease-out;
+}
+@keyframes rise {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel { animation: none; }
+}
+
+.list,
+.cases { margin: 0; padding: 0; list-style: none; }
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 20px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  color: var(--white);
+  cursor: pointer;
+}
+.item:hover { background: rgba(255, 255, 255, 0.08); }
+.item:focus-visible { outline: 2px solid var(--correo-yellow); outline-offset: -2px; }
+.item span:not(.iconSpacer) { flex: 1; }
+.iconSpacer { width: 22px; flex-shrink: 0; }
+.trailing { opacity: 0.7; }
+
+.cases { margin-top: 4px; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 4px; }
+.case {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px 12px 56px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Switch nativo con apariencia propia: sigue siendo un checkbox accesible. */
+.switch {
+  appearance: none;
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 120ms;
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  transition: transform 120ms;
+}
+.switch:checked { background: var(--correo-yellow); }
+.switch:checked::after { transform: translateX(18px); background: var(--correo-blue); }
+.switch:focus-visible { outline: 2px solid var(--correo-yellow); outline-offset: 2px; }

@@ -98,8 +98,8 @@ frontend:
     - "Envio internacional CLAUDE (tokens y fuentes)"
   change_log: "documentation/05-REGISTRO-DE-CAMBIOS.md"
   responsive:
-    status: desktop-only
-    breakpoint: "diseño a 1440; mobile sin definir en el Figma"
+    status: partial
+    breakpoint: "900px: navbar con menú y campanita, menú lateral, notificaciones a pantalla completa"
     wide_table_strategy: not-applicable
 
 capabilities:

@@ -32,7 +32,7 @@ novedades en PNG). No quedan referencias a URLs temporales de Figma.
 
 ## Diferencias conocidas
 
-- Sólo escritorio (diseño a 1440). El responsive de mobile no está definido en el Figma recibido.
+- Mobile (≤ 900 px): navbar con menú y campanita, y menú lateral desplegable. Ver [07-NOTIFICACIONES.md](07-NOTIFICACIONES.md).
 - El ícono «Servicios» del sidebar se arma con CSS porque en Figma son rectángulos, no un vector.
 - Los enlaces sin destino real apuntan a `#`; los que traía el Figma se conservaron.
 - Sin interacciones: botones y menús son estáticos hasta que llegue el requerimiento.

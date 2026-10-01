@@ -148,8 +148,30 @@
 .footerLinks i::after { content: '  '; }
 .footerLinks .baja { color: var(--home-ink); }
 
+.mobileMenu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.mobileMenu:focus-visible { outline: 2px solid var(--home-ink); outline-offset: 2px; border-radius: 4px; }
+
+/* Mobile: sin sidebar; la navbar sólo muestra el menú y la campanita. */
 @media (max-width: 900px) {
-  .navbarInner { padding: 4px 16px; }
+  .sidebar { display: none; }
+  .navbarInner { padding: 0 16px; }
+  .mobileMenu { display: flex; }
+  .logo,
+  .newShipping,
+  .account { display: none; }
+  .footer { padding: 0 16px; }
+  .footerInner { flex-direction: column; align-items: flex-start; gap: 0; }
+  .footerLinks { flex-wrap: wrap; white-space: normal; }
 }
 
 .rotated { transform: rotate(43.74deg); width: 17.2px; height: 30.2px; }

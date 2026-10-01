@@ -60,3 +60,33 @@
   cursor: pointer;
 }
 .footer:hover { text-decoration: underline; }
+
+.close {
+  display: none;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: var(--home-ink);
+  cursor: pointer;
+}
+
+/* Mobile: el panel ocupa la pantalla completa, con su propio botón de cerrar. */
+@media (max-width: 900px) {
+  .wrap { padding: 0; }
+  .panel {
+    position: fixed;
+    inset: 0;
+    z-index: var(--home-z-overlay);
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .header { min-height: var(--home-bar-size); box-sizing: border-box; padding: 0 16px; }
+  .list { padding-top: 8px; } /* «Ver todas» queda inmediatamente debajo de la lista */
+  .close { display: flex; }
+}

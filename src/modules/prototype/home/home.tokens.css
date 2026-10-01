@@ -15,6 +15,10 @@
   --home-border: rgba(0, 0, 0, 0.18);
   --home-footer-border: rgba(0, 0, 0, 0.17);
   --home-placeholder: #d9d9d9;
+  --home-scrim: rgba(0, 0, 0, 0.5); /* fondo detrás del menú mobile */
+  --home-divider: rgba(0, 0, 0, 0.12);
+  --home-drawer-width: 337px;
+  --home-z-overlay: 6000; /* menú y notificaciones en mobile, por encima del «Volver al Hub» del prototipo */
 
   --home-bar-size: 60px; /* alto de navbar y ancho de sidebar */
   --home-pad: 32px;

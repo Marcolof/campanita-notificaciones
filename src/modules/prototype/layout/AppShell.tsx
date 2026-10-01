@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useCallback, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 import homeIcon from '@/assets/home/sidebar-home.svg'
@@ -16,6 +16,7 @@ import '../home/home.tokens.css'
 import { NotificationBell } from '../notifications/NotificationBell'
 import { HOME_ROUTE } from '../notifications/routes'
 import styles from './AppShell.module.css'
+import { MobileDrawer } from './MobileDrawer'
 
 const sidebarItems: { label: string; icon: string | null; rotated?: boolean; to?: string }[] = [
   { label: 'Inicio', icon: homeIcon, to: HOME_ROUTE },
@@ -27,6 +28,9 @@ const sidebarItems: { label: string; icon: string | null; rotated?: boolean; to?
 
 /** Marco de MiCorreo logueado: sidebar, navbar (con la campanita) y footer. */
 export function AppShell({ children }: { children: ReactNode }) {
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const closeDrawer = useCallback(() => setDrawerOpen(false), [])
+
   return (
     <div className={styles.page} data-module="home">
       <aside className={styles.sidebar}>
@@ -61,6 +65,15 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className={styles.column}>
         <header className={styles.navbar}>
           <div className={styles.navbarInner}>
+            <button
+              type="button"
+              className={styles.mobileMenu}
+              aria-label="Abrir menú"
+              aria-expanded={drawerOpen}
+              onClick={() => setDrawerOpen(true)}
+            >
+              <img src={sidebarLogo} alt="" width={30} height={30} />
+            </button>
             <Link className={styles.logo} to={HOME_ROUTE}>
               <img src={logoMiCorreo} alt="Correo Argentino MiCorreo" width={197} height={28} />
             </Link>
@@ -82,6 +95,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
           </div>
         </header>
+
+        <MobileDrawer open={drawerOpen} onClose={closeDrawer} />
 
         {children}
 

@@ -45,8 +45,8 @@ Las versiones del prototipo se numeran y cada una tiene su propia ruta. Cuando e
 propuesta con campanita se agregará como ruta nueva; la base no se modifica para probar propuestas.
 
 Todas las rutas son deep links: se pueden abrir directamente y recargar. Desde cualquier
-punto hay regreso al Hub — en las landings de módulo por el breadcrumb, y sobre la réplica
-por un botón flotante que `PrototypeChrome` agrega **por fuera** del marcado replicado.
+punto hay regreso al Hub — en las landings de módulo por el breadcrumb, y en las pantallas del
+prototipo por la banda inferior que `PrototypeChrome` agrega **por fuera** del marcado (con los casos de uso).
 
 ## Una sola fuente editable por información
 

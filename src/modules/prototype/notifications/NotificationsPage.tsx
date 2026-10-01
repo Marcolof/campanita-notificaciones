@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { AppShell } from '../layout/AppShell'
 import { NotificationCard } from './NotificationCard'
+import { NotificationsEmpty } from './NotificationsEmpty'
 import { useNotifications } from './NotificationsContext'
 import { filterChips, type NotificationFilter } from './notifications.data'
 import { HOME_ROUTE } from './routes'
@@ -41,22 +42,28 @@ export function NotificationsPage() {
 
         <h1 className={styles.title}>Notificaciones</h1>
 
-        <div className={styles.filters} role="group" aria-label="Filtrar notificaciones">
-          {filterChips.map((chip) => (
-            <button
-              key={chip.id}
-              type="button"
-              className={styles.chip}
-              data-active={filter === chip.id}
-              aria-pressed={filter === chip.id}
-              onClick={() => setFilter(chip.id)}
-            >
-              {chip.label}
-            </button>
-          ))}
-        </div>
+        {notifications.length === 0 ? (
+          <div className={styles.list}>
+            <NotificationsEmpty />
+          </div>
+        ) : (
+          <div className={styles.filters} role="group" aria-label="Filtrar notificaciones">
+            {filterChips.map((chip) => (
+              <button
+                key={chip.id}
+                type="button"
+                className={styles.chip}
+                data-active={filter === chip.id}
+                aria-pressed={filter === chip.id}
+                onClick={() => setFilter(chip.id)}
+              >
+                {chip.label}
+              </button>
+            ))}
+          </div>
+        )}
 
-        {visible.length > 0 ? (
+        {notifications.length === 0 ? null : visible.length > 0 ? (
           <div className={styles.list}>
             {visible.map((n) => (
               <NotificationCard key={n.id} notification={n} />

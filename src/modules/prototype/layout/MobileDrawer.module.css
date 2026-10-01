@@ -1,0 +1,88 @@
+.root { position: fixed; inset: 0; z-index: var(--home-z-overlay); }
+.scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: var(--home-scrim);
+  cursor: pointer;
+}
+.drawer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(var(--home-drawer-width), 90vw);
+  overflow-y: auto;
+  background: var(--home-bg);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--home-bar-size);
+  flex-shrink: 0;
+  padding: 0 16px 0 24px;
+  background: var(--home-brand);
+}
+.close {
+  display: flex;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: var(--home-ink);
+  cursor: pointer;
+}
+.nav { display: flex; flex-direction: column; padding: 12px 0; border-bottom: 1px solid var(--home-divider); }
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 60px;
+  padding: 0 24px 0 22px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  color: var(--home-text);
+  cursor: pointer;
+}
+.item > span:not(.servicesIcon):not(.iconBox) { flex: 1; }
+.item:focus-visible,
+.close:focus-visible,
+.newShipping:focus-visible { outline: 2px solid var(--home-ink); outline-offset: -2px; }
+.chevron { color: var(--home-ink); }
+.lucide { flex-shrink: 0; color: var(--home-ink); }
+.iconBox { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex-shrink: 0; }
+.rotated { width: 14px; height: 24px; transform: rotate(43.74deg); }
+
+.servicesIcon { position: relative; display: block; flex-shrink: 0; width: 22px; height: 21px; margin: 0 1px; }
+.servicesIcon i {
+  position: absolute;
+  width: 10px;
+  height: 8.9px;
+  box-sizing: border-box;
+  border: 2.3px solid var(--home-ink);
+  border-radius: 2px;
+}
+.servicesIcon i:nth-child(1) { left: 0; top: 0; }
+.servicesIcon i:nth-child(2) { left: 11.3px; top: 11.1px; }
+.servicesIcon i:nth-child(3) { left: 0; top: 11.1px; }
+.servicesIcon img { position: absolute; left: 13px; top: 0.9px; width: 7px; height: 7px; }
+
+.secondary { padding: 8px 0; border-bottom: 1px solid var(--home-divider); }
+.newShipping {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 60px;
+  padding: 0 24px 0 22px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--home-ink);
+}
