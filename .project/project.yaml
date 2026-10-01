@@ -1,0 +1,216 @@
+schema_version: "0.3.1"
+last_updated: "2026-10-01"
+
+project:
+  name: "CAMPANITA NOTIFICACIONES"
+  client: "Correo Argentino"
+  scenario: "Centro de notificaciones (campanita) sobre la Home logueada de MiCorreo; por ahora sólo la base de trabajo"
+  local_root: "."
+
+origin:
+  mode: local-folder
+  external_repository:
+    url: null
+    ref: null
+    access: read-only
+    classification: null
+    imported_at: null
+    local_snapshot: null
+    source_manifest: null
+    import_map: null
+
+strategy:
+  current_focus: "Propuesta de notificaciones (campanita, panel y página) sobre la Home logueada; fuente de verdad: Figma 13948:32899"
+  intervention: "local-copy-of-reference"
+  recommended_next:
+    - "Recibir el requerimiento de la campanita de notificaciones"
+    - "Definir ubicación y comportamiento de la campanita en el header de la Home"
+  deferred:
+    - "Menú de usuario logueado de la landing (oculto en el DOM sin sesión)"
+    - "Scripts de terceros: GTM, Meta Pixel, chat de Wcentrix"
+
+knowledge:
+  confirmed:
+    - "Carpeta de trabajo: Campanita notificaciones"
+    - "Los estilos originales vienen de HOME STANDARD CON HUB / Formulario FF claude (sólo lectura)"
+    - "La pantalla a trabajar es la Home con usuario logueado (Figma Mi Correo 2.0, nodo 4959:89736); la landing sin sesión no va"
+    - "Los casos de prueba son siempre con usuario logueado"
+  assumptions:
+    - "La campanita se ubicará en el header de la Home — sin confirmar"
+  open_questions:
+    - "Requerimiento completo de notificaciones"
+    - "Ubicación, estados y mobile de la campanita"
+
+sources:
+  - id: home-standard-con-hub
+    kind: local-project
+    path: "C:/MLOF 01/VORTEX/CORREO ARGENTINO/HOME STANDARD CON HUB/Formulario FF claude"
+    access: read-only
+    copied_at: "2026-10-01"
+    used_for: "Base completa: código, tokens, assets y documentación"
+  - id: html-reference
+    kind: saved-page
+    path: "C:/MLOF 01/VORTEX/CORREO ARGENTINO/HOME STANDARD CON HUB/html reference"
+    access: read-only
+    local_copy: "reference/landing-original.html"
+    used_for: "estructura del DOM de la landing"
+  - id: landing-produccion
+    kind: public-url
+    url: "https://micorreo.correoargentino.com.ar/landing"
+    access: read-only
+    captured_at: "2026-09-10"
+    used_for: "estilos computados reales de la réplica (heredados de la base)"
+
+architecture:
+  mode: monorepo-single-build
+  build_root: "."
+  hub_route: "/"
+  deep_linking: required
+  module_style_isolation: required
+  notes: "Build único en la raíz, puerto 4330. El Hub es la home y cada módulo cuelga de una ruta interna. Tres ámbitos de estilo aislados: tokens.css (:root), shell.tokens.css ([data-shell]) y home.tokens.css ([data-module='home'])."
+  routes:
+    - path: "/"
+      module: hub
+    - path: "/prototipo"
+      module: prototype
+    - path: "/prototipo/home"
+      module: prototype
+    - path: "/prototipo/notificaciones"
+      module: prototype
+    - path: "/documentacion"
+      module: documentation
+    - path: "/documentacion/:docId"
+      module: documentation
+
+documentation:
+  source_mode: source-documents
+  module_path: "documentation"
+  canonical_source: "documentation/00-INDICE.md"
+  external_sources: []
+  change_log: "documentation/05-REGISTRO-DE-CAMBIOS.md"
+
+frontend:
+  source_mode: from-scratch
+  scratch_input: "Figma Mi Correo 2.0 nodo 4959:89736"
+  module_path: "src/modules/prototype"
+  canonical_source: "src/modules/prototype/home"
+  external_sources:
+    - "Envio internacional CLAUDE (tokens y fuentes)"
+  change_log: "documentation/05-REGISTRO-DE-CAMBIOS.md"
+  responsive:
+    status: desktop-only
+    breakpoint: "diseño a 1440; mobile sin definir en el Figma"
+    wide_table_strategy: not-applicable
+
+capabilities:
+  prototype: "implementación directa con Vite + React + TypeScript + CSS Modules"
+  documentation: "Markdown en documentation/"
+
+modules:
+  hub:
+    status: approved
+    route: "/"
+    path: "src/modules/hub"
+    children: []
+    notes: "Sólo muestra tarjetas de módulos con landing real; presentation no aparece."
+  documentation:
+    status: approved
+    route: "/documentacion"
+    path: "src/modules/documentation"
+    canonical_content: "documentation/"
+    children:
+      - name: "Contexto"
+        route: "/documentacion/contexto"
+        path: "documentation/01-CONTEXTO.md"
+        status: approved
+      - name: "Fuentes"
+        route: "/documentacion/fuentes"
+        path: "documentation/02-FUENTES.md"
+        status: approved
+      - name: "Color y tokens"
+        route: "/documentacion/color-y-tokens"
+        path: "documentation/03-COLOR-Y-TOKENS.md"
+        status: approved
+      - name: "Home logueada"
+        route: "/documentacion/home-logueada"
+        path: "documentation/04-HOME-LOGUEADA.md"
+        status: approved
+      - name: "Registro de cambios"
+        route: "/documentacion/registro-de-cambios"
+        path: "documentation/05-REGISTRO-DE-CAMBIOS.md"
+        status: approved
+      - name: "Notificaciones"
+        route: "/documentacion/notificaciones"
+        path: "documentation/07-NOTIFICACIONES.md"
+        status: approved
+      - name: "Requerimiento GC01"
+        route: "/documentacion/requerimiento-gc01"
+        path: "documentation/08-REQUERIMIENTO-GC01.md"
+        status: approved
+      - name: "Arquitectura y rutas"
+        route: "/documentacion/arquitectura-y-rutas"
+        path: "documentation/06-ARQUITECTURA-Y-RUTAS.md"
+        status: approved
+  prototype:
+    status: review
+    fidelity: high
+    route: "/prototipo"
+    path: "src/modules/prototype"
+    children:
+      - name: "Home logueada — base"
+        route: "/prototipo/v1"
+        path: "src/modules/prototype/home"
+        status: review
+      - name: "Notificaciones — propuesta"
+        route: "/prototipo/notificaciones"
+        path: "src/modules/prototype/notifications"
+        status: review
+        note: "Home logueada con campanita y panel. Sin definir."
+    extraction:
+      required: true
+      status: partial
+      entrypoint: "src/modules/prototype/home/HomeLogueada.tsx"
+      standalone_command: "npm run dev"
+      shared_dependencies:
+        - "src/styles/tokens.css"
+        - "src/styles/globals.css"
+        - "src/modules/prototype/home/home.tokens.css"
+      adapters: []
+      module_guide: "documentation/04-HOME-LOGUEADA.md"
+  presentation:
+    status: absent
+    route: null
+    path: "presentation"
+    children: []
+
+figma:
+  status: none
+  source: none
+  sync: not-required-yet
+
+design_system:
+  status: partial
+  source: "tokens.css heredado de Envio internacional CLAUDE + home.tokens.css propio del módulo"
+
+delivery:
+  local_first: true
+  local_status: pending-verification
+  repository: "https://github.com/Marcolof/campanita-notificaciones"
+  repository_status: connected
+  remote_repository_creation: user-only
+  local_git_init: done
+  remote_connection: user-provided-url-only
+  push_policy: explicit
+  branch: main
+  vercel_project: null
+  public_url: null
+  status: local-only
+  last_verified: "2026-10-01"
+  vercel_config: "vercel.json (SPA rewrite, build npm run build → dist)"
+  env_template: ".env.example"
+  excluded_from_repo:
+    - "documentation/*.docx (GC01, uso interno)"
+    - ".claude/"
+    - "public/fonts/*.ttf (Gilroy, con licencia; se sirve desde VITE_FONTS_BASE_URL)"
+  repository_visibility: public
+  create_vercel_project: false

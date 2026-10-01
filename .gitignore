@@ -1,0 +1,28 @@
+# Dependencias y build
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Entorno (sólo se versiona .env.example)
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel/
+
+# Configuración local de Claude
+.claude/
+
+# Documentos internos del cliente: no se publican
+documentation/*.docx
+documentation/*.pdf
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Tipografía con licencia: se sirve desde VITE_FONTS_BASE_URL
+public/fonts/*.ttf
+public/fonts/*.woff
+public/fonts/*.woff2

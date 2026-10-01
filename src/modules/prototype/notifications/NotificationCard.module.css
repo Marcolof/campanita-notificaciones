@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: var(--home-surface);
+  box-shadow: var(--notif-card-shadow);
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  padding: 10px 0 10px 10px;
+  background: var(--white);
+}
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 100px;
+  background: var(--notif-icon-bg);
+  color: var(--home-ink);
+}
+.main {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+}
+.headline { display: flex; align-items: center; gap: 8px; min-height: 16px; }
+.dot { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: var(--notif-dot-unread); }
+.type { flex: 1; font-size: 14px; font-weight: 500; color: var(--notif-text-disabled); }
+.type[data-type='Cuenta'] { color: var(--home-text-secondary); }
+.time { font-size: 12px; font-weight: 500; white-space: nowrap; color: var(--notif-text-disabled); }
+.title { margin: 0; font-size: 14px; font-weight: 600; color: var(--home-text); }
+.body { margin: 0; font-size: 12px; font-weight: 500; color: var(--home-text-secondary); }
+.action { font-size: 14px; font-weight: 500; color: var(--notif-link); }
+.dot[data-indicator='alert'] { background: var(--notif-badge-alert); }

@@ -1,0 +1,35 @@
+/* ============================================================================
+ * home.tokens.css — tokens de la Home logueada (Figma "Mi Correo 2.0", nodo 4959:89736)
+ * Reutiliza primitivas de tokens.css; sólo declara lo propio de esta pantalla.
+ * ========================================================================= */
+[data-module='home'] {
+  --home-brand: var(--correo-yellow);
+  --home-ink: var(--correo-blue);
+  --home-text: var(--correo-near-black);
+  --home-text-secondary: #474747;
+  --home-text-muted: var(--correo-grey-700);
+  --home-link-muted: #79747e;
+  --home-bg: var(--correo-off-white);
+  --home-sidebar-bg: #f5f5f5;
+  --home-surface: var(--white);
+  --home-border: rgba(0, 0, 0, 0.18);
+  --home-footer-border: rgba(0, 0, 0, 0.17);
+  --home-placeholder: #d9d9d9;
+
+  --home-bar-size: 60px; /* alto de navbar y ancho de sidebar */
+  --home-pad: 32px;
+  --home-radius-card: 21.2px;
+  --home-radius-pill: 9999px;
+  --home-shadow-card: 0 1.767px 1.767px rgba(0, 0, 0, 0.08);
+
+  /* --- Notificaciones (Figma nodo 13948:32899) --- */
+  --notif-dot-unread: #2196f3;
+  --notif-badge-alert: #f03131; /* icon/color-icon-error */
+  --notif-text-disabled: #a7a7a7;
+  --notif-link: #2562ea;
+  --notif-surface-panel: #f2f2f2;
+  --notif-chip-border: #e5e7ec;
+  --notif-card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  --notif-panel-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+  --notif-icon-bg: rgba(21, 38, 99, 0.05); /* azul de marca al 5% */
+}

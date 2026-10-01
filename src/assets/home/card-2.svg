@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="121" height="156" viewBox="0 0 121 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="card" filter="url(#filter0_g_0_459)">
+<path id="Rectangle 1" d="M1 1H60.5H90.25L120 28.3595V39.5V78V155H1V1Z" fill="#FFCE00"/>
+<path id="Vector 2 (Stroke)" d="M88.1224 45.5C90.9407 45.5 93.2254 47.7518 93.2254 50.5295C93.2254 53.3071 90.9407 55.5589 88.1224 55.5589H19.6889C16.8706 55.5589 14.5859 53.3071 14.5859 50.5295C14.5859 47.7518 16.8706 45.5 19.6889 45.5H88.1224Z" fill="#152663"/>
+<path id="Vector 3 (Stroke)" d="M72.7348 68.1328C75.5532 68.1328 77.8379 70.3846 77.8379 73.1623C77.8379 75.94 75.5532 78.1917 72.7348 78.1917H19.6889C16.8706 78.1917 14.5859 75.94 14.5859 73.1623C14.5859 70.3846 16.8706 68.1328 19.6889 68.1328H72.7348Z" fill="#152663"/>
+<path id="Vector 4 (Stroke)" d="M101.89 90.7578C104.708 90.758 106.993 93.0097 106.993 95.7873C106.993 98.5649 104.708 100.817 101.89 100.817H19.6889C16.8706 100.817 14.5859 98.565 14.5859 95.7873C14.5859 93.0096 16.8706 90.7578 19.6889 90.7578H101.89Z" fill="#152663"/>
+<path id="Vector 5 (Stroke)" d="M50.8689 113.391C53.6871 113.391 55.9719 115.642 55.9719 118.42C55.9719 121.198 53.6871 123.449 50.8689 123.45H19.6889C16.8706 123.45 14.5859 121.198 14.5859 118.42C14.5859 115.642 16.8706 113.391 19.6889 113.391H50.8689Z" fill="#152663"/>
+</g>
+<defs>
+<filter id="filter0_g_0_459" x="0" y="0" width="121" height="156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.125 0.125" numOctaves="3" seed="2702" />
+<feDisplacementMap in="shape" scale="2" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_0_459">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+</defs>
+</svg>
